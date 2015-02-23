@@ -43,8 +43,8 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class timezone (
-  $ensure = 'present',
-  $timezone = 'UTC',
+  $ensure      = 'present',
+  $timezone    = 'UTC',
   $autoupgrade = false
 ) inherits timezone::params {
 
