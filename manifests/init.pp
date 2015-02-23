@@ -98,7 +98,7 @@ class timezone (
   }
 
   file { $timezone::params::localtime_file:
-    ensure  => $localtime_ensure,
-    target  => "${timezone::params::zoneinfo_dir}${timezone}",
+    ensure => $localtime_ensure,
+    target => "${timezone::params::zoneinfo_dir}${timezone}",
   }
 }
