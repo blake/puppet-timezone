@@ -71,7 +71,7 @@ class timezone (
     }
   }
 
-  if $package != undef {
+  if $timezone::params::package {
     package { $timezone::params::package:
       ensure => $package_ensure,
     }
