@@ -47,7 +47,6 @@ class timezone::params {
       $zoneinfo_dir = '/usr/share/zoneinfo/'
       $localtime_file = '/etc/localtime'
       $timezone_file = false
-      $timezone_update = 'adjkerntz -a'
     }
     default: {
       case $::operatingsystem {
