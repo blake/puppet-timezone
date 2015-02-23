@@ -43,8 +43,8 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class timezone (
-  $ensure = 'present',
-  $timezone = 'UTC',
+  $ensure      = 'present',
+  $timezone    = 'UTC',
   $autoupgrade = false
 ) inherits timezone::params {
 
@@ -71,9 +71,10 @@ class timezone (
     }
   }
 
-  if $package != undef {
+  if $timezone::params::package {
     package { $timezone::params::package:
       ensure => $package_ensure,
+      before => File[$timezone::params::localtime_file],
     }
   }
 
@@ -97,11 +98,7 @@ class timezone (
   }
 
   file { $timezone::params::localtime_file:
-    ensure  => $localtime_ensure,
-    target  => "${timezone::params::zoneinfo_dir}${timezone}",
-    require => $::osfamily ? {
-      FreeBSD => undef,
-      default => Package[$timezone::params::package],
-    },
+    ensure => $localtime_ensure,
+    target => "${timezone::params::zoneinfo_dir}${timezone}",
   }
 }
